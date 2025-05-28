@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>小东西</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #ffc0cb, #ffb6c1, #ffe4e1);
+        background-size: 600% 600%;
+        animation: bgShift 4s ease infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 800px;
+        overflow: hidden;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      #msg {
+        font-weight: bold;
+        font-size: 8vw;
+        color: #fff;
+        backface-visibility: visible;
+        transform-style: preserve-3d;
+        animation: spin 5s linear infinite,
+          bob 2s ease-in-out infinite alternate;
+      }
+      @keyframes spin {
+        to {
+          transform: rotateY(360deg);
+        }
+      }
+      @keyframes bob {
+        to {
+          transform: translateZ(50px) translateY(20px);
+        }
+      }
+      @keyframes bgShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      #modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      #modal div {
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      #modal div p {
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="msg">姐姐你好漂亮❤️</div>
+
+    <div id="modal">
+      <div>
+        <p>我的糖呢！！🍬~</p>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById("modal");
+      setTimeout(() => (modal.style.display = "flex"), 7000);
+    </script>
+  </body>
+</html>
